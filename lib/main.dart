@@ -15,7 +15,7 @@ class RecipeApp extends StatelessWidget {
       theme: theme.copyWith(
           colorScheme: theme.colorScheme
               .copyWith(primary: Colors.grey, secondary: Colors.black)),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Resepku'),
     );
   }
 }
