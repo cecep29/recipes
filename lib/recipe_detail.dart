@@ -26,6 +26,16 @@ class RecipeDetail extends StatelessWidget {
             Text(
               recipe.label,
               style: const TextStyle(fontSize: 18),
+            ),
+            Expanded(
+              child: ListView.builder(
+                  padding: const EdgeInsets.all(6.0),
+                  itemCount: recipe.ingredients.length,
+                  itemBuilder: (BuildContext context, index) {
+                    final ingredient = recipe.ingredients[index];
+                    return Text(
+                        '${ingredient.quantity} ${ingredient.measure} ${ingredient.name}');
+                  }),
             )
           ],
         ),
