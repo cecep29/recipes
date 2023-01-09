@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:recipes/recipe_detail.dart';
 
 import 'recipe.dart';
 
@@ -40,13 +41,17 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: SafeArea(
-        child: ListView.builder(
-          itemCount: Recipe.samples.length,
-          itemBuilder: (BuildContext context, int index) {
-            return buildCardRecipe(Recipe.samples[index]);
-          },
-        ),
+      body: ListView.builder(
+        itemCount: Recipe.samples.length,
+        itemBuilder: (BuildContext context, int index) {
+          return GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return RecipeDetail(recipe: Recipe.samples[index]);
+                }));
+              },
+              child: buildCardRecipe(Recipe.samples[index]));
+        },
       ),
     );
   }
@@ -62,6 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(children: [
           Image(
             image: AssetImage(recipe.imageUrl),
+            width: double.infinity,
+            fit: BoxFit.cover,
           ),
           const SizedBox(
             height: 14.0,
